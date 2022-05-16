@@ -13,12 +13,12 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" :class="{ 'show' : isActive }" aria-labelledby="dropdownMenu1">
-            <li>Citizen</li>
-            <li>Casio</li>
-            <li>Fossil</li>
-            <li>Gucci</li>
-            <li>Guess</li>
-            <li>Sekonda</li>
+            <li><a @click="addStock">Citizen</a></li>
+            <li><a href="#">Casio</a></li>
+            <li><a href="#">Fossil</a></li>
+            <li><a href="#">Gucci</a></li>
+            <li><a href="#">Guess</a></li>
+            <li><a href="#">Sekonda</a></li>
           </ul>
         </div>
       </div>
@@ -36,6 +36,14 @@ export default {
   methods: {
     openDropdown() {
       this.isActive =! this.isActive
+    },
+    addStock() {
+      const item = {
+        stockId: 5,
+        stockName: 'Citizen',
+        stockPrice: 100,
+      };
+      this.$store.dispatch("addStock", item);
     },
   },
 };

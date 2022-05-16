@@ -19,9 +19,19 @@ const mutations = {
       stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
     });
   },
+  'ADD_STOCK'(state, { stockId, stockName, stockPrice }) {
+      state.stocks.push({
+        id: stockId,
+        name: stockName,
+        price: stockPrice,
+      });
+  },
 };
 
 const actions = {
+  addStock(context, stocks) {
+    context.commit('ADD_STOCK', stocks);
+  },
   buyStock(context, order) {
     context.commit('BUY_STOCK', order);
   },

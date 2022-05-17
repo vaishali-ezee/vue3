@@ -13,12 +13,12 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" :class="{ 'show' : isActive }" aria-labelledby="dropdownMenu1">
-            <li><a @click="addStock">Citizen</a></li>
-            <li><a href="#">Casio</a></li>
-            <li><a href="#">Fossil</a></li>
-            <li><a href="#">Gucci</a></li>
-            <li><a href="#">Guess</a></li>
-            <li><a href="#">Sekonda</a></li>
+            <li 
+              v-for="(watches, index) in watchesData"
+              :key="index"
+            >
+              <a @click="addStock(index)"> {{ watches.name }} </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -27,21 +27,23 @@
 </template>
 
 <script>
+import watches from '../../data/watches'
 export default {
   data() {
     return {
       isActive: false,
+      watchesData : watches
     };
   },
   methods: {
     openDropdown() {
       this.isActive =! this.isActive
     },
-    addStock() {
+    addStock(index) {
       const item = {
-        stockId: 5,
-        stockName: 'Citizen',
-        stockPrice: 100,
+        stockId: this.watchesData[index].id,
+        stockName: this.watchesData[index].name,
+        stockPrice: this.watchesData[index].price,
       };
       this.$store.dispatch("addStock", item);
     },

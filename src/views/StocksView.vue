@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <h1>This is an Stocks page</h1>
+  <div class="grid grid-cols-3 gap-3">
+ 
   </div>
 </template>

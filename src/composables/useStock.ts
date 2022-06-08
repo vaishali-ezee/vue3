@@ -3,13 +3,14 @@ import stocks from '../data/stock'
 
 export const useStock = () => {
   const stocksList = stocks
-   function availableStock (data : unknown[]) {
+  let stocksAvailableData: unknown[] = []
+  function availableStock (data : unknown[]) {
     console.log(data);
-    const response = data
-    return response
+    stocksAvailableData = data
   }
 
   return {
+    stocksAvailableData,
     stocksList,
     availableStock,
   }

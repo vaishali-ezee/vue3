@@ -1,6 +1,6 @@
 <template>
   <div v-for="stock in stockList" :key="stock.id" class="flex items-start items-center mb-4 ml-6" >
-    <input type="checkbox" v-model="checkedStock" :value="stock.id" @change="availableStock1()" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded">
+    <input type="checkbox" v-model="checkedStock" :value="stock.id" @change="availableStock(checkedStock)" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded">
     <label class="text-sm ml-3 font-medium text-gray-900">{{ stock.name }}</label>
   </div>
 </template>
@@ -21,13 +21,5 @@ export default defineComponent({
       availableStock,
     }
   },
-  methods : {
-    availableStock1() {
-      console.log(this.checkedStock)
-    }
-  },
-  mounted() {
-    console.log(this.checkedStock)
-  }
 })
 </script>

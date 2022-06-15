@@ -1,5 +1,5 @@
 <template>
- {{ stocksList }}
+ {{ availableStockList }}
   <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     <div class="bg-green-200">
         <h5 class="mb-2 text-xl tracking-tight text-green-700 py-2 px-4">BMW <span class="text-xs">( Price: 110 )</span></h5>
@@ -28,9 +28,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'stocks-section',
   data() {
-    const { stocksList } = useStock()
+    const { stocksList, availableStockList } = useStock()
  
     return {
+      availableStockList,
       stocksList,
     }
   },

@@ -1,17 +1,12 @@
 
 import stocks from '../data/stock'
 
+import { reactive } from 'vue'
+
 export const useStock = () => {
-  const stocksList = stocks
-  let stocksAvailableData: unknown[] = []
-  function availableStock (data : unknown[]) {
-    console.log(data);
-    stocksAvailableData = data
-  }
+  const stocksList = reactive(stocks) 
 
   return {
-    stocksAvailableData,
     stocksList,
-    availableStock,
   }
 }

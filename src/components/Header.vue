@@ -1,5 +1,6 @@
 <template>
   <header>
+    {{stocksList}}
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
       <div class="px-24 w-full flex flex-wrap items-center justify-between">
@@ -24,7 +25,7 @@
           </li>
         </ul>
         <div>
-          <p class="inline-block font-medium text-base pr-2 lg:px-2 py-2">Funds: $10,000</p>
+          <p class="inline-block font-medium text-base pr-2 lg:px-2 py-2">Funds: {{funds}}</p>
         </div>
       </div>
       </div>
@@ -35,7 +36,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useStock } from '../composables/useStock'
+
 export default defineComponent({
   name: 'header-section',
+   data() {
+    const { stocksList, funds } = useStock() 
+    return {
+      funds,
+      stocksList,
+    }
+  },
 })
 </script>

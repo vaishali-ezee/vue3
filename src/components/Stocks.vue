@@ -56,7 +56,7 @@ export default defineComponent({
         stockPrice: this.stock.price,
         quantity: this.quantity,
       };
-      this.updatedFunds(data)
+      this.updatedFunds('buy',data)
     }
       this.quantity = 0
     }

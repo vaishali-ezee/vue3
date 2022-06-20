@@ -19,7 +19,6 @@ export default defineComponent({
     const { stocksList } = useStock()
  
     return {
-      quantity: [],
       stocksList,
     }
   },

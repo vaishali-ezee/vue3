@@ -1,22 +1,20 @@
 
 import { stocks } from '../data/stock'
 
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 export const useStock = () => {
 
-  const stocksList = reactive(stocks.data)
-  const funds = ref(stocks.funds);
+  const stocksList = reactive(stocks)
 
-  function updatedFunds(amount: number) {
-    console.log(funds.value,amount)
-    funds.value = ( funds.value - amount)
-    console.log(funds.value,amount)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function updatedFunds(stock: any) {
+    stocksList.data[stock.stockId].quantity = stocksList.data[stock.stockId].quantity + stock.quantity
+    stocksList.funds = ( stocksList.funds - (stock.quantity * stocksList.data[stock.stockId].price))
   }
   
   return {
     stocksList,
-    funds,
     updatedFunds,
   }
 }
